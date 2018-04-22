@@ -35,7 +35,7 @@ export const Toolbar = (vnode) => {
                         class="bg-gold black pv2 ph3 mt1 mr1 bw0 br-pill tc dim pointer fr"
                         onclick={newTransaction}
                     >
-                        <span class="fw6"> &#9728; </span>
+                        <span class="fw6"> &#8709; </span>
                     </button>
                 </div>
                 <PickSearch />
