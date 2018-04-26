@@ -10,8 +10,8 @@ export const PickSearch = () => {
     };
     const ItemsMap = () => {
         return ProductModel.list.map((product, index) => {
-            const item = CartModel.current.list.filter(item => item.id==product.id);
-            item.length>0 ? product.qty = item[0].qty : product.qty = 0;
+            const item = CartModel.current.list.find(item => item.plu==product.plu);
+            product.qty =  item ? item.qty : 0;
             return <ItemButton key={index} product={product}/>
         });
     };

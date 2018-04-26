@@ -23,9 +23,9 @@ const CartModel = {
         CartModel.current.list = postponed[0].list;
     },
 
-    addItem: ({id, name, price}) => {
+    addItem: ({plu, name, price}) => {
         let current = CartModel.current.list.filter(item => {
-            if (item.id==id) {
+            if (item.plu==plu) {
                 item.qty++;
                 item.subtotal = item.qty*item.price;
                 return item;
@@ -33,7 +33,7 @@ const CartModel = {
             return null;
         });
         if (current.length<=0) {
-            CartModel.current.list.push({id: id, name: name, price: price, qty: 1, subtotal: 1*price})
+            CartModel.current.list.push({plu: plu, name: name, price: price, qty: 1, subtotal: 1*price})
         };
     },
     summary: {

@@ -21,8 +21,7 @@ export const Layout = () => {
                 {/* dialog */}
                 {
                     ApplicationState.showDialogNewTransaction ?
-                        <DialogNewTransaction /> :
-                        null
+                    <DialogNewTransaction /> : null
                 }
 
                 {/* content */}
@@ -30,7 +29,7 @@ export const Layout = () => {
                 
                 {/* footer */}
                 <div class="cf bg-black-70 white pr3 f6 tr lh-copy">
-                    <p>Powered by: <span class="i b"> Monommania </span></p>
+                    <p>Powered by: <span class="i b"> MonommaniaPOS </span></p>
                 </div>
             </div>
     }
