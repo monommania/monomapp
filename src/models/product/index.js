@@ -1,4 +1,9 @@
+import {ProductService, ProductModel} from 'poscore';
+
 const ProductModel = {
+    init: () => {
+
+    },
     list: [
         {
             plu: "1",
