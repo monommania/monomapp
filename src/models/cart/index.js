@@ -1,7 +1,11 @@
+import { Product, IStorage } from 'poscore';
 import Guid from '../../providers/guid';
 import Storage from '../../providers/local-storage';
 
 const CartModel = {
+    init: () => {
+
+    },
     current: {
         transactionID: "",
         list: []

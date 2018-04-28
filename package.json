@@ -15,7 +15,8 @@
   "author": "erdi",
   "license": "ISC",
   "dependencies": {
-    "mithril": "^1.1.6"
+    "mithril": "^1.1.6",
+    "poscore": "git+ssh://git@github.com/monommania/poscore.git"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
