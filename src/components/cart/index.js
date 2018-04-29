@@ -12,7 +12,7 @@ export const Cart = () => {
                 <div class="overflow-auto">
                     <table class="f6 w-100 mw8 center" cellspacing="0">
                         <tbody class="lh-copy">
-                            { CartModel.current.list.map(item => <Item Item={item}/>) }
+                            { CartModel.current.items.map(item => <Item Item={item}/>) }
                         </tbody>
                     </table>
                 </div>

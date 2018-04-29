@@ -7,11 +7,13 @@ import {Cart} from '../cart';
 import ApplicationState from '../../models/application';
 
 export const Layout = () => {
+    const title = "Daily Coffee";
+    const tgl = (new Date()).toDateString();
     return {
         view: () =>
             <div class="pa2 avenir">
                 {/* Header */}
-                <Header title="Monom POS System" info="23/01 2018"/>
+                <Header title={title} info={tgl}/>
                 
                 <hr style="border: 0;height: 2px;background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));"/>
 

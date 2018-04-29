@@ -12,12 +12,25 @@ const addItem = () => {
 };
 
 const newTransaction = () => {
-    if (CartModel.summary.count()>0) {
+    if (CartModel.current.summary.qty>0) {
         ApplicationState.showDialogNewTransaction = window.confirm(Languages.dialogs.newTransaction);
     } else {
         ApplicationState.showDialogNewTransaction = true;
     }
 };
+
+const checkOut = () => {
+    if (CartModel.current.summary.qty>0) {
+        CartModel.checkOut()
+            .then(function(result) {
+                if (result) {
+                    CartModel.new()
+                    m.redraw();
+                };
+            })
+            .catch(error => console.log(error));
+    }
+}
 
 export const Toolbar = (vnode) => {
     return {
@@ -36,6 +49,12 @@ export const Toolbar = (vnode) => {
                         onclick={newTransaction}
                     >
                         <span class="fw6"> &#8709; </span>
+                    </button>
+                    <button 
+                        class="bg-gold black pv2 ph3 mt1 mr1 bw0 br-pill tc dim pointer fr"
+                        onclick={checkOut}
+                    >
+                        <span class="fw6"> $ </span>
                     </button>
                 </div>
                 <PickSearch />

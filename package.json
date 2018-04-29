@@ -1,6 +1,6 @@
 {
   "name": "mithril-jsx-boilerplate",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "a jsx boiler plate for mithril app",
   "main": "src/index.js",
   "scripts": {
