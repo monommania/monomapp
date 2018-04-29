@@ -1,5 +1,5 @@
 import m from 'mithril';
-import ProductModel from '../../models/product';
+import Products from '../../models/product';
 import CartModel from '../../models/cart';
 import { ItemButton } from './item-button';
 
@@ -9,10 +9,15 @@ export const PickSearch = () => {
         modal.style.display = "none";
     };
     const ItemsMap = () => {
-        return ProductModel.list.map((product, index) => {
+        return Products.list.map((product, index) => {
             const item = CartModel.current.list.find(item => item.plu==product.plu);
             product.qty =  item ? item.qty : 0;
             return <ItemButton key={index} product={product}/>
+        });
+    };
+    const updateData = (message, data) => {
+        Products.fetchAll().then(function(result){
+            console.log(message, data);
         });
     };
     return {
@@ -24,7 +29,10 @@ export const PickSearch = () => {
                 }
             }
         },
-        
+        oninit: () => {
+            Products.fetchAll(updateData);
+        },
+              
         view: () => 
             <div id="dialog-pick" class="modal">
                 <div class="modal-content">
