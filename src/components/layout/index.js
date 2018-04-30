@@ -7,7 +7,7 @@ import {Cart} from '../cart';
 import ApplicationState from '../../models/application';
 
 export const Layout = () => {
-    const title = "Daily Coffee";
+    const title = 'Daily Coffee';
     const tgl = (new Date()).toDateString();
     return {
         view: () =>

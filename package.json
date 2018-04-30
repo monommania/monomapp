@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack -d --watch",
     "build": "webpack -p",
+    "postbuild": "bash scripts/postbuild.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
