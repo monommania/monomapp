@@ -23,12 +23,14 @@ const checkOut = () => {
     if (CartModel.current.summary.qty>0) {
         CartModel.checkOut()
             .then(function(result) {
-                if (result) {
                     CartModel.new()
                     m.redraw();
-                };
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                console.log(error);
+                CartModel.new()
+                m.redraw();
+            });
     }
 }
 
@@ -37,24 +39,24 @@ export const Toolbar = (vnode) => {
         view: () =>
             <div class="cf bg-near-white pt2">
                 <Qty />
-                <div class="fl w-50">
+                <div class="fl w-80">
                     <button 
-                        class="bg-gold black pv2 ph3 mt1 mr3 bw0 br-pill tc dim pointer fr"
+                        class="bg-dark-green white pv3 w-30 mt1 mr3 bw0 br-pill tc dim pointer fr"
                         onclick={addItem}
                     >
-                        <span class="fw6"> &#10010; </span>
+                        <span style="font-size: 1.5rem" class="f5 fw6"> &#10010; </span>
                     </button>
                     <button 
-                        class="bg-gold black pv2 ph3 mt1 mr1 bw0 br-pill tc dim pointer fr"
+                        class="bg-dark-green white pv3 w-30 mt1 mr1 bw0 br-pill tc dim pointer fr"
                         onclick={newTransaction}
                     >
-                        <span class="fw6"> &#8709; </span>
+                        <span style="font-size: 1.5rem" class="f5 fw6"> &#8709; </span>
                     </button>
                     <button 
-                        class="bg-gold black pv2 ph3 mt1 mr1 bw0 br-pill tc dim pointer fr"
+                        class="bg-dark-green white pv3 w-30 mt1 mr1 bw0 br-pill tc dim pointer fr"
                         onclick={checkOut}
                     >
-                        <span class="fw6"> $ </span>
+                        <span style="font-size: 1.5rem" class="f5 fw6"> $ </span>
                     </button>
                 </div>
                 <PickSearch />

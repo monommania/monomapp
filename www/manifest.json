@@ -1,13 +1,13 @@
 {
   "name": "MonommaniaPOS",
-  "short_name": "M.P.S",
+  "short_name": "MPS",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
-    "src": "assets/imgs/logo.svg",
+    "src": "assets/imgs/logo.png",
     "sizes": "512x512",
-    "type": "image/svg"
+    "type": "image/png"
   }],
-  "background_color": "#4e8ef7",
-  "theme_color": "#4e8ef7"
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
 }

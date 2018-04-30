@@ -2,7 +2,7 @@
 importScripts('./build/sw-toolbox.js');
 
 self.toolbox.options.cache = {
-  name: 'monommaniapos-cache'
+  name: 'ionic-cache'
 };
 
 // pre-cache our key assets

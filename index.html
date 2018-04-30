@@ -7,9 +7,9 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     
-    <!-- <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico"> -->
+    <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#4e8ef7">
+    <meta name="theme-color" content="#ffffff">
     
     <!-- add to homescreen for ios -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,11 +17,43 @@
 
     <!-- un-comment this code to enable service worker -->
     <script>
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('service-worker.js')
-            .then(() => console.log('service worker installed'))
-            .catch(err => console.error('Error', err));
-        }
+        window.MonommaniaPosUpdateIsAvailable = new Promise(function(resolve, reject) {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(reg => {
+                        console.log("service worker installed successfully!");
+                        reg.onupdatefound = () => {
+                            const installingWorker = reg.installing;
+                            installingWorker.onstatechange = () => {
+                                switch (installingWorker.state) {
+                                    case 'installed':
+                                        if (navigator.serviceWorker.controller) {
+                                            // new update available
+                                            resolve(true);
+                                        } else {
+                                            // no update available
+                                            resolve(false);
+                                        }
+                                        break;
+                                }
+                            };
+                        };
+                    })
+                    .catch(err => console.error('Error', err));
+            }            
+        });
+        setInterval(function(){
+            console.log("checking");
+            window['MonommaniaPosUpdateIsAvailable']
+            .then(isAvailable => {
+                console.log("update available", isAvailable);
+                if (isAvailable) {
+                    if (window.confirm("New application update available, reload application?")) {
+                        window.location.reload();
+                    }
+                }
+            });
+        }, 300000);
     </script>
     
     <link rel="stylesheet" href="build/css/tachyons.min.css"/>

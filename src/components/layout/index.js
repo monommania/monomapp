@@ -7,8 +7,11 @@ import {Cart} from '../cart';
 import ApplicationState from '../../models/application';
 
 export const Layout = () => {
-    const title = 'Daily Coffee';
+    const title = 'Daily Coffee Toraja';
     const tgl = (new Date()).toDateString();
+    const reloadMonomApp = () => {
+        window.location.reload(true);
+    }
     return {
         view: () =>
             <div class="pa2 avenir">
@@ -30,8 +33,20 @@ export const Layout = () => {
                 <Cart />
                 
                 {/* footer */}
-                <div class="cf bg-black-70 white pr3 f6 tr lh-copy">
-                    <p>Powered by: <span class="i b"> MonommaniaPOS </span></p>
+                <div class="cf bg-black-80">
+                    <div class="fl w-30">
+                        <button 
+                            style="font-size: 1.5rem"
+                            class="bg-black-90 white mt1 ml1 pv1 ph4 fw6 lh-copy bw0 br2 dim"
+                            onclick={reloadMonomApp}
+                        >
+                            &#x267C;
+                            {/* Reload */}
+                        </button>
+                    </div>
+                    <div class="cf fl w-70 white pr3 f6 tr lh-copy">
+                        <p>Powered by: <span class="i b"> MonommaniaPOS </span></p>
+                    </div>
                 </div>
             </div>
     }
