@@ -20,17 +20,14 @@ const newTransaction = () => {
 };
 
 const checkOut = () => {
+    console.log("checkOut");
     if (CartModel.current.summary.qty>0) {
-        CartModel.checkOut()
-            .then(function(result) {
-                    CartModel.new()
-                    m.redraw();
-            })
-            .catch(error => {
-                console.log(error);
-                CartModel.new()
-                m.redraw();
-            });
+        const transaction = CartModel.checkOut();
+        CartModel.new()
+        m.redraw();
+        transaction
+            .then(result => result)
+            .catch(error => error);
     }
 }
 
