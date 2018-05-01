@@ -17,7 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "mithril": "^1.1.6",
-    "poscore": "git+ssh://git@github.com/monommania/poscore.git"
+    "poscore": "git+ssh://git@github.com/monommania/poscore.git",
+    "print-js": "^1.0.40"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

@@ -40,7 +40,7 @@ export const Layout = () => {
                             class="bg-black-90 white mt1 ml1 pv1 ph4 fw6 lh-copy bw0 br2 dim"
                             onclick={reloadMonomApp}
                         >
-                            &#x267C;
+                            &#8635;
                             {/* Reload */}
                         </button>
                     </div>
