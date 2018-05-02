@@ -37,4 +37,4 @@ const App = () => {
 
 const root = document.getElementById("root");
 
-m.mount(root, App)
+m.mount(root, App);
