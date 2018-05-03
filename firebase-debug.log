@@ -1,0 +1,60 @@
+[debug] [2018-05-03T14:00:59.286Z] ----------------------------------------------------------------------
+[debug] [2018-05-03T14:00:59.291Z] Command:       /home/erdi/software/node-dev-tools/node-v8.9.0-linux-x64/bin/node /home/erdi/software/node-dev-tools/nodejs89/bin/firebase deploy
+[debug] [2018-05-03T14:00:59.291Z] CLI Version:   3.18.4
+[debug] [2018-05-03T14:00:59.291Z] Platform:      linux
+[debug] [2018-05-03T14:00:59.292Z] Node Version:  v8.9.0
+[debug] [2018-05-03T14:00:59.292Z] Time:          Thu May 03 2018 21:00:59 GMT+0700 (WIB)
+[debug] [2018-05-03T14:00:59.292Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-05-03T14:00:59.309Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-05-03T14:00:59.310Z] > authorizing via signed-in user
+[debug] [2018-05-03T14:00:59.314Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/monommania-9e2fb  
+  
+ Thu May 03 2018 21:00:59 GMT+0700 (WIB)
+[debug] [2018-05-03T14:01:01.284Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-03T14:01:01.286Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/monommania-9e2fb/tokens  
+  
+ Thu May 03 2018 21:01:01 GMT+0700 (WIB)
+[debug] [2018-05-03T14:01:02.298Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-03T14:05:20.707Z] ----------------------------------------------------------------------
+[debug] [2018-05-03T14:05:20.712Z] Command:       /home/erdi/software/node-dev-tools/node-v8.9.0-linux-x64/bin/node /home/erdi/software/node-dev-tools/nodejs89/bin/firebase deploy
+[debug] [2018-05-03T14:05:20.712Z] CLI Version:   3.18.4
+[debug] [2018-05-03T14:05:20.713Z] Platform:      linux
+[debug] [2018-05-03T14:05:20.713Z] Node Version:  v8.9.0
+[debug] [2018-05-03T14:05:20.713Z] Time:          Thu May 03 2018 21:05:20 GMT+0700 (WIB)
+[debug] [2018-05-03T14:05:20.713Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-05-03T14:05:20.733Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-05-03T14:05:20.733Z] > authorizing via signed-in user
+[debug] [2018-05-03T14:05:20.738Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/monommania-9e2fb  
+  
+ Thu May 03 2018 21:05:20 GMT+0700 (WIB)
+[debug] [2018-05-03T14:05:23.199Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-03T14:05:23.201Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/monommania-9e2fb/tokens  
+  
+ Thu May 03 2018 21:05:23 GMT+0700 (WIB)
+[debug] [2018-05-03T14:05:25.028Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'monommania-9e2fb'...
+[info] 
+[info] i  deploying firestore, hosting
+[info] i  firestore: checking firestore.rules for compilation errors...
+[debug] [2018-05-03T14:05:26.411Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/monommania-9e2fb:test  
+ { source: { files: [ [Object] ] } } 
+ Thu May 03 2018 21:05:26 GMT+0700 (WIB)
+[debug] [2018-05-03T14:05:28.513Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: rules file firestore.rules compiled successfully
+[info] i  firestore: uploading rules firestore.rules...
+[debug] [2018-05-03T14:05:28.522Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/monommania-9e2fb/rulesets  
+ { source: { files: [ [Object] ] } } 
+ Thu May 03 2018 21:05:28 GMT+0700 (WIB)
+[debug] [2018-05-03T14:05:28.524Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta1/projects/monommania-9e2fb/databases/(default)/indexes  
+  
+ Thu May 03 2018 21:05:28 GMT+0700 (WIB)
+[debug] [2018-05-03T14:05:29.943Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-03T14:05:29.944Z] [rules] created ruleset projects/monommania-9e2fb/rulesets/e252260d-be52-4527-b17d-f0d74316fa1a
+[debug] [2018-05-03T14:05:30.260Z] <<< HTTP RESPONSE 200
+[info] i  hosting: preparing www directory for upload...
+[debug] [2018-05-03T14:05:30.421Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/monommania-9e2fb/uploads/-LBaJbJCjD5HyV1kj6Xa?fileCount=10&message=  
+  
+ Thu May 03 2018 21:05:30 GMT+0700 (WIB)
