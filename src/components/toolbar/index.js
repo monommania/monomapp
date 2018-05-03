@@ -4,6 +4,7 @@ import {Qty} from '../summary';
 import {PickSearch} from '../search';
 import CartModel from '../../models/cart';
 import ApplicationState from '../../models/application';
+import { Checkout } from '../checkout';
 
 
 const addItem = () => {
@@ -20,14 +21,9 @@ const newTransaction = () => {
 };
 
 const checkOut = () => {
-    console.log("checkOut");
+    console.log("000 checkOut");
     if (CartModel.current.summary.qty>0) {
-        const transaction = CartModel.checkOut();
-        CartModel.new()
-        m.redraw();
-        transaction
-            .then(result => result)
-            .catch(error => error);
+        m.route.set("/checkout");
     }
 }
 

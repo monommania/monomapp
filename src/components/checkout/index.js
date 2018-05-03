@@ -1,23 +1,13 @@
 import m from 'mithril';
 import CartModel from '../../models/cart';
-import {isBrowserMobile} from '../../providers/helper';
+import {isBrowserMobile, textNumber} from '../../providers/helper';
 
-const chekOutLine = (vnode) => {
-    const Item = vnode.attrs.Item
-    return {
-        view: () => (
-            <tr class="stripe-dark">
-                <td style="font-size: 1.5rem" class="pv3 pa2 f6"> {Item.name} </td>
-                <td class="pv3 pa2 f5"> {Item.qty}x {textNumber(Item.price)}  </td>
-                <td class="pv3 pa2 f5 fw6 tr"> {textNumber(Item.subtotal)} </td>
-            </tr>
-        )
-    }
-}
+
 export const Checkout = (vnode) => {
-    const transaction = vnode.attrs.transaction;
-    const printReceipt = (transaction) => {
-        const {id, items, summary} = transaction;
+    const transaction = CartModel.current;
+    const {id, items, summary} = transaction;
+    
+    const printReceipt = () => {
         const line = "<line><br>";
         const dline = "<dline><br>";
         const endLine = "<br><cut>";
@@ -28,47 +18,87 @@ export const Checkout = (vnode) => {
             "timestamp: " + (new Date()).toLocaleString() + "<br>" +
             line;
         const farewellText = "<center>We will always welcome you again!"
-        const summaryQty = `;;QTY:;;${summary.qty}<br>`; 
-        const summaryTotal = `;;QTY:;;${summary.total}<br>`; 
+        const summaryQty = `;;QTY:;;${textNumber(summary.qty)}<br>`; 
+        const summaryTotal = `;;QTY:;;${textNumber(summary.total)}<br>`; 
 
         var text = title;
         items.map(item => {
             text += `<left>${item.name}<br>
-                    ;;${item.price}x${item.price};;${item.subtotal}<br>`;
+                    ;;${item.qty}x${textNumber(item.price)};;${textNumber(item.subtotal)}<br>`;
         });
         text += dline;
         text += summaryQty;
         text += summaryTotal;
         text += starLine;
         text += farewellText;
-        // var text = title +
-        // "<left>Marlboro<br>" +
-        // ";;2x50.000;;100.000<br>" +
-        // "<left>Cappuchino<br>" +
-        // ";;3x20.000;;50.000<br>" +
-        // "<dline>" + "<br>" +
-        // ";;QTY:;;5<br>"+
-        // ";;TOTAL:;;150.000<br>"+
-        // "<cut>";
         console.log(text);
         var textEncoded = encodeURI(text);
         if (isBrowserMobile()) {
             window.location.href="intent://"+textEncoded+"#Intent;scheme=quickprinter;package=pe.diegoveloper.printerserverapp;end;";
         }
     }
+
+    const checkOutAndPrint = () => {
+        console.log("checkOut");
+        if (CartModel.current.summary.qty>0) {
+            const transaction = CartModel.checkOut();
+            printReceipt();
+            CartModel.new();
+            // m.redraw();
+            m.route.set("/");
+            transaction
+                .then(result => result)
+                .catch(error => error);
+        }
+    }
+
+    // payment calculation
+    var cashReturn = 0;
+    const calculatePayment = (value) => {
+        cashReturn = value - summary.total;
+    }
     return {
-        view: () =>  
+        view: () =>  (
             <div class="bg-near-white pt3 ph3 pb4">
                 <div id="receipt-form-area" class="overflow-auto">
-                    <table class="f6 w-100 mw8 center" cellspacing="0">
-                        <tbody class="lh-copy">
-                            <Item Item={{name: "Quantity: "}}/>
-                        </tbody>
-                    </table>
+                    <legend class="dark-green baskerville i b underline f4 fw6 ph0 mh0">Checkout</legend>
+                    <div class="cf mt3 mb2">
+                        
+                        <div class="fl w-50">
+                            <label class="db fw6 lh-copy f6" for="email-address">Total</label>
+                            <legend class="black-70 f3 fw6 ph0 mh0"> {textNumber(summary.total)}</legend>
+                        </div>
+                    </div>
+                    <div class="cf db w-100">
+                        <label class="db fw6 lh-copy f6" for="email-address">Cash</label>
+                        <div>
+                            <div class="dib fl w-50">
+                                <input 
+                                    class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="number" name="email-address"  id="email-address"
+                                    oninput={m.withAttr("value", calculatePayment)}
+                                />
+                            </div>
+                            <div class="dib fl w-50">
+                                <button class="pv2 ph4">...</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cf mt3">
+                        <label class="db fw6 lh-copy f6" for="email-address">Kembalian</label>
+                        <legend class="black-70 f3 fw6 ph0 mh0"> {textNumber(cashReturn)}</legend>
+                    </div> 
                 </div>
-                <button onclick={printReceipt(transaction)}>
-                    PRINT
-                </button>
+                <div class="mt3">
+                    <input 
+                        class="b ph4 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Back" 
+                        // onclick={}
+                    />
+                    <input 
+                        class="b ph4 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Print" 
+                        onclick={checkOutAndPrint}
+                    />
+                </div>
             </div>
+        )
     }
 }

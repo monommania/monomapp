@@ -4,4 +4,12 @@ const isBrowserMobile = function() {
     return check;
 };
 
-module.exports = {isBrowserMobile};
+const textNumber = (n) => {
+    let result = n.toString();
+    result = (navigator.language || navigator.userLanguage)==="id-ID" ?
+        result.replace(/\B(?=(\d{3})+(?!\d))/g, ".") : result;    
+    return result;
+}
+
+
+module.exports = {isBrowserMobile, textNumber};
