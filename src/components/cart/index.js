@@ -5,7 +5,7 @@ import CartModel from '../../models/cart';
 export const Cart = () => {
     return {
         oninit: () => {
-            CartModel.new();
+            // CartModel.new();
         },
         view: () =>  
             <div class="bg-near-white pt3 ph3 pb4">

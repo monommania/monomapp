@@ -91,7 +91,7 @@ export const Checkout = (vnode) => {
                 <div class="mt3">
                     <input 
                         class="b ph4 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Back" 
-                        // onclick={}
+                        onclick={()=>{m.route.set("/")}}
                     />
                     <input 
                         class="b ph4 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Print" 
