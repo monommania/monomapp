@@ -2,7 +2,7 @@ import m from 'mithril';
 import Languages from '../../models/languages';
 import {Qty} from '../summary';
 import {PickSearch} from '../search';
-import CartModel from '../../models/cart';
+import {Carts} from '../../models/cart';
 import ApplicationState from '../../models/application';
 import { Checkout } from '../checkout';
 
@@ -13,7 +13,7 @@ const addItem = () => {
 };
 
 const newTransaction = () => {
-    if (CartModel.current.summary.qty>0) {
+    if (Carts.current.summary.qty>0) {
         ApplicationState.showDialogNewTransaction = window.confirm(Languages.dialogs.newTransaction);
     } else {
         ApplicationState.showDialogNewTransaction = true;
@@ -22,7 +22,7 @@ const newTransaction = () => {
 
 const checkOut = () => {
     console.log("000 checkOut");
-    if (CartModel.current.summary.qty>0) {
+    if (Carts.current.summary.qty>0) {
         m.route.set("/checkout");
     }
 }

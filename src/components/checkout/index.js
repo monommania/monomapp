@@ -1,11 +1,12 @@
 import m from 'mithril';
-import CartModel from '../../models/cart';
+import {Carts} from '../../models/cart';
 import {isBrowserMobile, textNumber} from '../../providers/helper';
 
 
 export const Checkout = (vnode) => {
-    const transaction = CartModel.current;
-    const {id, items, summary} = transaction;
+    
+    const {id, items, summary} = Carts.current;
+    console.log("itemssss", items);
     
     const printReceipt = () => {
         const line = "<line><br>";
@@ -39,16 +40,17 @@ export const Checkout = (vnode) => {
     }
 
     const checkOutAndPrint = () => {
-        console.log("checkOut");
-        if (CartModel.current.summary.qty>0) {
-            const transaction = CartModel.checkOut();
+        console.log("checkOut", Carts.current);
+        if (Carts.current.summary.qty>0) {
+            const transaction = Carts.checkOut()
+                .then(result => result);
             printReceipt();
-            CartModel.new();
+            Carts.new();
             // m.redraw();
             m.route.set("/");
-            transaction
-                .then(result => result)
-                .catch(error => error);
+            // transaction
+            //     .then(result => result)
+            //     .catch(error => error);
         }
     }
 

@@ -1,10 +1,11 @@
 import m from 'mithril';
-import CartModel from '../../models/cart';
+import {Carts} from '../../models/cart';
 
 export const ItemButton = (vnode) => {
     const product = vnode.attrs.product;
     const addItem = () => {
-        CartModel.addItem(product);
+        Carts.addItem(product);
+        console.log(Carts, "adddinnngg");
     }
     return {
         view: () => 

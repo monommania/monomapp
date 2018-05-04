@@ -1,6 +1,6 @@
 import m from 'mithril';
-import Products from '../../models/product';
-import CartModel from '../../models/cart';
+import {Products} from '../../models/product';
+import {Carts} from '../../models/cart';
 import { ItemButton } from './item-button';
 
 export const PickSearch = () => {
@@ -10,7 +10,7 @@ export const PickSearch = () => {
     };
     const ItemsMap = () => {
         return Products.list.map((product, index) => {
-            const item = CartModel.current.items.find(item => item.plu==product.plu);
+            const item = Carts.current.items.find(item => item.plu==product.plu);
             product.qty =  item ? item.qty : 0;
             return <ItemButton key={index} product={product}/>
         });

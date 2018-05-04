@@ -1,6 +1,7 @@
 import m from 'mithril';
 import { Layout } from './components/layout';
 import { Checkout } from './components/checkout';
+import { Login } from './components/login';
 
 const App = () => {
     return {
@@ -14,7 +15,8 @@ const App = () => {
 const root = document.getElementById("root");
 
 // m.mount(root, App);
-m.route(document.body, "/", {
+m.route(document.body, "/login", {
     "/": App,
+    "/login": Login,
     "/checkout": Checkout,
 })

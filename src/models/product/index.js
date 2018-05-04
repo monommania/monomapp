@@ -1,6 +1,13 @@
 import { ProductService, ProductModelFirestore } from 'poscore';
+import Store from '../../models/store';
 
-const model = new ProductModelFirestore({id: "store-0000001", name: "Daily Coffee"});
-const Products = new ProductService(model);
+var Products;
+const initProductService =  () => {
+    let store = Store;
+    const model = new ProductModelFirestore(store);
+    Products = new ProductService(model);
+}
 
-export default  Products;
+initProductService();
+
+export {Products, initProductService};

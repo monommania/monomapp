@@ -3,16 +3,21 @@ import {Header} from '../header';
 import {Toolbar} from '../toolbar';
 import {DialogNewTransaction} from '../toolbar/dialog-new-transaction';
 import {Cart} from '../cart';
-
 import ApplicationState from '../../models/application';
+import Store from '../../models/store';
+
 
 export const Layout = () => {
-    const title = 'Daily Coffee Toraja';
+    const title = Store.name;
     const tgl = (new Date()).toDateString();
     const reloadMonomApp = () => {
         window.location.reload(true);
     }
     return {
+        oninit: () => {
+            const isLogin = ApplicationState.isLogin;
+            if (!isLogin) m.route.set("/login");
+        },
         view: () =>
             <div class="pa2 avenir">
                 {/* Header */}

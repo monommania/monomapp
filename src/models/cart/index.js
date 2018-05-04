@@ -1,5 +1,13 @@
 import { CartService, CartModelFirestore } from 'poscore';
+import Store from '../../models/store';
 
-const model = new CartModelFirestore({id: "store-0000001", name: "Daily Coffee"});
-const Carts = new CartService(model);
-export default  Carts;
+var Carts;
+const initCartService = () => {
+    let store = Store;
+    const model = new CartModelFirestore(store);
+    Carts = new CartService(model);
+}
+
+initCartService();
+
+export {Carts, initCartService};

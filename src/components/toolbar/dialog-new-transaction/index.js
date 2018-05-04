@@ -1,20 +1,20 @@
 import m from 'mithril';
 import Languages from '../../../models/languages';
-import CartModel from '../../../models/cart';
+import {Carts} from '../../../models/cart';
 import ApplicationState from '../../../models/application';
 
 const newTransaction = () => {
-    CartModel.new();
+    Carts.new();
     ApplicationState.showDialogNewTransaction = false;
 };
 
 const openPostponed = () => {
-    CartModel.openFromPostponed();
+    Carts.openFromPostponed();
     ApplicationState.showDialogNewTransaction = false;
 }
 
 const saveToPostponed = () => {
-    CartModel.addToPostponed();
+    Carts.addToPostponed();
     newTransaction();
 }
 
