@@ -12,7 +12,7 @@ const ApplicationState = {
             Store.name =  "Daily Coffeee Toraja";
         } else {
             Store.id = "store-0000000";
-            Store.name= "Testing Mode"
+            Store.name= "MonommaniaPOS Demo"
         }
         initProductService();
         initCartService();

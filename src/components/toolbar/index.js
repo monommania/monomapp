@@ -13,11 +13,12 @@ const addItem = () => {
 };
 
 const newTransaction = () => {
-    if (Carts.current.summary.qty>0) {
-        ApplicationState.showDialogNewTransaction = window.confirm(Languages.dialogs.newTransaction);
-    } else {
-        ApplicationState.showDialogNewTransaction = true;
-    }
+    // if (Carts.current.summary.qty>0) {
+    //     ApplicationState.showDialogNewTransaction = window.confirm(Languages.dialogs.newTransaction);
+    // } else {
+    //     ApplicationState.showDialogNewTransaction = true;
+    // }
+    Carts.new();
 };
 
 const checkOut = () => {
