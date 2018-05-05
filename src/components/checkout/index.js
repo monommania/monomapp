@@ -43,14 +43,13 @@ export const Checkout = (vnode) => {
         console.log("checkOut", Carts.current);
         if (Carts.current.summary.qty>0) {
             const transaction = Carts.checkOut()
-                .then(result => result);
             printReceipt();
             Carts.new();
             // m.redraw();
             m.route.set("/");
-            // transaction
-            //     .then(result => result)
-            //     .catch(error => error);
+            transaction
+                .then(result => result)
+                .catch(error => error);
         }
     }
 
