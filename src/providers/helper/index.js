@@ -6,10 +6,18 @@ const isBrowserMobile = function() {
 
 const textNumber = (n) => {
     let result = n.toString();
-    result = (navigator.language || navigator.userLanguage)==="id-ID" ?
+    // alert(navigator.language || navigator.userLanguage);
+    result = ((navigator.language || navigator.userLanguage)==="id-ID") || ((navigator.language || navigator.userLanguage)==="en-US") ?
         result.replace(/\B(?=(\d{3})+(?!\d))/g, ".") : result;    
     return result;
 }
 
+const timeString = (date) => {
+    const resultDate = (new Date(parseInt(date)));
+    const hour = resultDate.getHours() ? resultDate.getHours() : 0;
+    const minute = resultDate.getMinutes() ? resultDate.getMinutes() : 0;
+    const second = resultDate.getSeconds() ? resultDate.getSeconds() : 0;
+    return hour + ":" + minute + ":" + second;
+}
 
-module.exports = {isBrowserMobile, textNumber};
+module.exports = {isBrowserMobile, textNumber, timeString};

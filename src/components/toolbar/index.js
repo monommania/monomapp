@@ -22,7 +22,6 @@ const newTransaction = () => {
 };
 
 const checkOut = () => {
-    console.log("000 checkOut");
     if (Carts.current.summary.qty>0) {
         m.route.set("/checkout");
     }

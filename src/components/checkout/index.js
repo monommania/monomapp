@@ -12,13 +12,12 @@ export const Checkout = (vnode) => {
         const line = "<line><br>";
         const dline = "<dline><br>";
         const endLine = "<br><cut>";
-        const starLine = "<center>****************************<br>";
+        const starLine = "<center>*******************************<br>";
         const title = "<center><big>Daily Coffee.<br>" +
             starLine +
-            "id: " + id + "<br>"
             "timestamp: " + (new Date()).toLocaleString() + "<br>" +
             line;
-        const farewellText = "<center>We will always welcome you again!"
+        const farewellText = "<center>We'll always welcome you again!"
         const summaryQty = `;;QTY:;;${textNumber(summary.qty)}<br>`; 
         const summaryTotal = `;;QTY:;;${textNumber(summary.total)}<br>`; 
 
@@ -34,9 +33,8 @@ export const Checkout = (vnode) => {
         text += farewellText;
         console.log(text);
         var textEncoded = encodeURI(text);
-        if (isBrowserMobile()) {
-            window.location.href="intent://"+textEncoded+"#Intent;scheme=quickprinter;package=pe.diegoveloper.printerserverapp;end;";
-        }
+        
+        window.location.href="intent://"+textEncoded+"#Intent;scheme=quickprinter;package=pe.diegoveloper.printerserverapp;end;";
     }
 
     const checkOutAndPrint = () => {
